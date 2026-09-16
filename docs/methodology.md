@@ -19,9 +19,9 @@ shoe.
 
 The probability that the next card is a given rank is then
 
-```
-P(next card = r) = cards of rank r remaining / cards remaining
-```
+$$P(X_{t+1} = r \mid c_t) = \frac{c_{t,r}}{N_t}, \qquad N_t = \sum_r c_{t,r}$$
+
+where $c_t$ counts what remains after $t$ observed cards,
 
 and after each further card, the shoe changes and every probability is
 recomputed. This is conditioning, not prediction: the numbers describe what is
@@ -63,13 +63,25 @@ For each legal action, 21-simulator follows every possible continuation:
 - **Split** — the pair becomes separate hands (see the split models below).
 - **Surrender**, where the rules offer it.
 
-Each final outcome has a probability and a payout. Their weighted sum is the
-action's **Expected Value** per unit staked; the same outcomes give its win /
-push / loss probabilities and its full **payoff distribution**.
+Each final outcome $o$ has a probability and a payout $u(o)$ in units of the
+original wager. Their weighted sum is the action's **Expected Value**
 
-Actions are ranked by Expected Value. The **decision margin** is the gap between
-the best and second-best action, placed in published bands (decisive, clear,
-narrow, near-tie). **EV regret** for any other choice is `EV(best) − EV(choice)`.
+$$\mathrm{EV}(a \mid s) = \sum_{o} P(o \mid a, s)\, u(o),$$
+
+and the same outcome law gives the win / push / loss probabilities and the full
+**payoff distribution** — from which variance, downside probability and tail
+figures follow. The dealer's contribution enters through its terminal
+distribution $P(D = d \mid u, c_t)$, computed by recursion over the remaining
+shoe under the table's drawing rule.
+
+Actions are ranked by Expected Value. The **decision margin** is
+
+$$m(s) = \mathrm{EV}(a^{*} \mid s) - \mathrm{EV}(a^{(2)} \mid s),$$
+
+the gap between the best and second-best action, placed in published bands
+(decisive, clear, narrow, near-tie). **EV regret** for any other choice is
+$\mathrm{EV}(a^{*} \mid s) - \mathrm{EV}(a \mid s)$, which is what a
+disagreement actually costs.
 
 ### Split models
 
@@ -104,6 +116,21 @@ machine is.
 
 A decision margin smaller than the uncertainty of the estimate behind it is
 reported as **unresolved**, which is different from a near-tie.
+
+---
+
+## 4a. One action, one state change
+
+A decision is only meaningful against the state it was taken in. Each session
+carries a version that advances when a command is accepted; every command names
+the version it was chosen against, and one naming a version the table has
+already left is refused rather than applied to whatever is current.
+
+That makes the guarantee **ownership**, not timing: duplicate delivery, a slow
+calculation, an impatient second click or an out-of-order response cannot cause
+a second transition or move a decision onto a hand nobody was asked about. The
+interface allows one command in flight and redraws from the refusal if it loses
+a race.
 
 ---
 

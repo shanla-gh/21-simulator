@@ -8,6 +8,67 @@ down.
 
 ---
 
+## v2.1.0 — The download
+
+*Product hardening, packaging and the first public build. No validated
+mathematical result from v2.0.0 changed.*
+
+### Added
+
+- **A downloadable Windows application.** No Python, no installer, no account:
+  extract and run. It starts a local server, opens your browser at it, and stops
+  when the window is closed. Published with a SHA-256 checksum.
+- **Two ways to run it.** The normal launch, and `--serve` for anyone who wants
+  to open the address themselves. Also `--port`, `--no-browser`, `--version` and
+  `--help`.
+- **`--diagnostics`**: a short, shareable report — version, platform, whether the
+  bundled resources were found, which research artifacts are present. It
+  contains no environment variables, credentials or personal paths.
+- **Worked examples in the table builder**, so a first run produces a real
+  analysis in one click: hard 16 vs 10, soft 18 vs 4, a pair of eights vs 6, and
+  a thin single-deck shoe.
+- **The version is shown in the interface.**
+
+### Fixed
+
+- **A decision could be applied to a hand you were never asked about.** If a
+  command took a moment, the page looked unchanged, and a second press was sent
+  as a second decision — on a two-seat table, pressing STAND twice stood the
+  next seat's hand. Actions are now tied to the state they were chosen against,
+  so one deliberate action causes at most one state change, whatever the timing.
+  The actions are unavailable while one is being applied, and a command that
+  lost its turn redraws the table instead of reporting an error.
+- **Two copies could fight over one port on Windows.** A second instance could
+  bind a port already in use and silently take part of the first one's traffic.
+  A busy port now moves the new copy to another port on the same interface, and
+  says so.
+- **The research view was empty unless started from the right directory.**
+  Bundled artifacts are now found wherever the application is run from.
+- **An unexpected fault could reach the browser as a stack trace.** It now
+  answers with a plain message and logs the detail to the console.
+- Output is no longer buffered when the application's output is captured, so a
+  log shows the address and any startup problem immediately.
+
+### Security
+
+- Loopback-only by default; any other interface requires `--allow-remote`, and
+  the reason is stated where the flag is.
+- A strict content-security-policy, framing refusal, `nosniff`, `no-referrer`
+  and `no-store` on every response.
+- Request size limits, JSON validation, and static files served only from the
+  bundled web folder.
+- No credentials, no telemetry by default, and nothing written outside the
+  application folder in normal use.
+
+### Notes
+
+- Builds are **not code-signed**; Windows SmartScreen may warn on first run. The
+  published checksum is the check that matters.
+- Packaging bundles a Python runtime and is **not** source protection; this is
+  stated rather than implied.
+
+---
+
 ## v2.0.0 — Beyond the recommendation
 
 *Advanced mathematics, research views, machine-learning evaluation and compute

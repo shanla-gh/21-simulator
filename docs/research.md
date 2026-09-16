@@ -17,6 +17,13 @@ each by its exact probability and valuing it at the best action, gives a
 six-deck house edge of **≈ 0.5661%** — a player Expected Value of
 **−0.005661** per unit staked.
 
+**What was and was not solved exactly.** No action of any deal was sampled. But
+"exact" here describes the arithmetic, not the split model: the 52 deals where
+splitting is best — about **2.27% of opening probability mass** — are valued
+under the **per-hand** model. This figure should not be read as every split
+state having been solved by full exact shared-shoe enumeration. Section 4 is
+about exactly that distinction.
+
 No action of any deal was estimated. 52 deals, carrying 2.27% of the
 probability, are best played by splitting; those are valued with the per-hand
 split model (see section 4).
@@ -37,10 +44,11 @@ unconfirmed for any particular real table. Each one moves the figure.
 - **It is not basic strategy.** Every state is played at its
   composition-dependent optimum, which is worth slightly more than a fixed
   strategy card.
-- **It does not include resplitting.** Splits are valued to two hands. A separate
-  sampled estimate suggests resplitting to four hands would add roughly
-  +0.05% under a stated playing strategy; that estimate is not folded into the
-  enumerated figure.
+- **It does not include resplitting.** Splits are valued to two hands. Measured
+  separately (section 5), resplitting to four hands adds **+0.053%** under a
+  stated playing strategy, which would put the modelled edge near **0.513%**.
+  That correction is not folded into the enumerated figure, because the two come
+  from different models.
 - **It is not advice.** It says nothing about what any player will win or lose.
 
 > A note on the one-deck figure: v2.0.0 supersedes an earlier, lower one-deck
@@ -162,6 +170,11 @@ the available memory. The error there is not measured. See
 Resplitting was measured separately, by sampling the physical process on a single
 shared shoe with a built-in check against the enumerated split in every cell. Under
 a stated per-hand playing strategy, resplitting to four hands was worth up to
-about **+0.10 units** for a pair of eights against a seven, and roughly **+0.05%**
-across the six-deck game. This is an estimate with its own uncertainty and
-assumptions, not an exact result.
+about **+0.10 units** for a pair of eights against a seven, and **+0.053%**
+across the six-deck game — moving the modelled six-deck edge from ≈ 0.5661% to
+approximately **0.513%**.
+
+This is an estimate with its own uncertainty and assumptions, not an exact
+result, and it comes from a different model than the enumeration it corrects.
+The two are quoted with their parts rather than merged into a single figure
+called exact.
