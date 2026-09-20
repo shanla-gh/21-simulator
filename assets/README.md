@@ -28,13 +28,10 @@ images from the published build of that release.
 
 The README embeds only files that exist, so there are no broken images.
 
-Regenerate them with the project's own capture script pointed at a running
-copy of the published build, so the pictures stay reproducible:
-
-```
-21-simulator.exe --serve --port 8123
-python scripts/screenshot.py --url http://127.0.0.1:8123 --output shots     --only builder --only trace --only live --only research --only phone
-```
+These are produced by the project's own capture tool driving a running copy of
+the published build, so they are reproducible rather than hand-composed: start
+the application with `--serve`, point the capture at that address, and the same
+states come out the same way.
 
 ## Guidelines
 
