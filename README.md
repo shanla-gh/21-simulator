@@ -8,7 +8,7 @@ A probability and stochastic-decision research application built around Blackjac
 It reconstructs an observed table state and shows the mathematics that state implies —
 every distribution, every action value, and how each number was produced.
 
-![Release](https://img.shields.io/badge/release-v2.1.1-1f6f5c)
+![Release](https://img.shields.io/badge/release-v2.1.2-1f6f5c)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-444444)
 ![Runs](https://img.shields.io/badge/runs-locally%2C%20no%20account-5b7f8a)
 ![Source](https://img.shields.io/badge/source-not%20publicly%20distributed-555555)
@@ -96,6 +96,50 @@ showing a plausible default.
 The left-hand picture is mid-split: the shoe, the probabilities and the action
 comparison follow the round as it is dealt, one observation at a time, and undo
 replays the state from what was recorded rather than patching it backwards.
+
+---
+
+## Six decks or eight
+
+The two shoe sizes you are most likely to be sitting at are a single press, in
+the simulator, the table builder and Live Reconstruction. Any deck count the
+rules allow can still be typed; the buttons are there because choosing between
+two common shoes should not require typing a number.
+
+| Shoe | Cards | Each rank | Ten-valued |
+| --- | --- | --- | --- |
+| 6 decks | **312** | 24 | 96 |
+| 8 decks | **416** | 32 | 128 |
+
+The deck count is not a label on the result — it is the shoe every figure is
+computed from. Composition, next-card probabilities, dealer distributions,
+action values, payoff distributions, decision margins, penetration and the
+true-count normalisation all divide by what the selected shoe actually holds.
+The same hard 16 against a ten is a different calculation at each size, and
+both are enumerated exactly.
+
+The application will not let a result and a shoe drift apart:
+
+- The shoe panel states its size — *"Shoe — 8 decks, 416 cards"*.
+- The Full Mathematical Trace names the deck count, and marks it as a setting
+  rather than a confirmed table rule.
+- Choosing a size that is not the table in play says so: *"Playing 6 decks —
+  start the simulator to build 8"*.
+- Change the shoe with a result on screen and the answer is marked as belonging
+  to the old one: *"This answer is for a 6-deck shoe. The shoe is now set to
+  8 decks — press Calculate again."*
+
+Both sizes are covered by the regression suite — composition invariants, rank
+multiplicities, $P(X_{t+1}=r \mid c_t) = c_{t,r}/N_t$ against the selected
+shoe, count normalisation, penetration, session restore and undo — and both are
+checked against the independent exact-rational reference engine.
+
+**What this is not.** This models a *finite shoe of a size you choose*. It is
+not a real-casino mode: there is no continuous shuffling machine, no
+uncertainty about how many decks are in play or how many cards were burned, and
+no automatic recognition of a table. Published whole-game research figures
+below are for the shoes they were computed on — six decks and one deck. There
+is no published eight-deck house edge.
 
 ---
 
@@ -279,10 +323,10 @@ This layer is research. It is **not** "AI beats Blackjack".
 
 | | |
 | --- | --- |
-| Current release | **v2.1.1** |
+| Current release | **v2.1.2** |
 | Platform | Windows x64 |
-| Artifact | `21-simulator-v2.1.1-windows-x64.zip` (8.7 MB) |
-| SHA-256 | `5fb89f2231e4f414e02c5a15db648b587097c4479843b9afb6f3d509ed52a9ad` |
+| Artifact | `21-simulator-v2.1.2-windows-x64.zip` (8.7 MB) |
+| SHA-256 | `5f0472c66bb1e278145a4bc14f4c7e64bbfd28ad65dea1b97f0843967ea1c785` |
 | Requirements | none — no Python, no installer, no account |
 
 Extract the folder anywhere and run `21-simulator.exe`. It starts a local
@@ -315,10 +359,11 @@ research-contribution feature is off unless switched on deliberately.
 
 - **Independent certification.** Core values are compared against a separate
   exact-rational reference implementation sharing no code with the engine. In
-  the v2.1.1 run all 27 comparisons agreed to within **2.2 × 10⁻¹⁶**.
+  the v2.1.2 run all 27 comparisons agreed to within **2.2 × 10⁻¹⁶** at one
+  deck and at six, and **4.4 × 10⁻¹⁶** at eight.
 - **Validation suite.** Distribution closure, exact-vs-sampled cross-checks and
   published dealer tables: **15 of 15** checks passed.
-- **Regression suite.** 2,207 automated tests, including 157 browser tests
+- **Regression suite.** 2,261 automated tests, including 165 browser tests
   driving the real interface, plus a stress tier of long simulations.
 - **Packaged-artifact tests.** The downloadable build is started as a stranger
   would start it — copied elsewhere, path containing spaces, no development
@@ -330,7 +375,8 @@ research-contribution feature is off unless switched on deliberately.
 
 | Version | Focus |
 | --- | --- |
-| **v2.1.1** | Readability and session fixes: controls stay readable under the pointer, a refresh keeps the hand |
+| **v2.1.2** | Six-deck and eight-deck shoes as an explicit choice, stated everywhere a number is shown |
+| v2.1.1 | Readability and session fixes: controls stay readable under the pointer, a refresh keeps the hand |
 | v2.1.0 | Product hardening: interaction correctness, security, packaging, the Windows download |
 | v2.0.0 | Advanced mathematics, research views, ML evaluation, compute hardening |
 | v1.1.0 | Live Reconstruction and the table builder |

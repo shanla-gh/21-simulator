@@ -6,7 +6,7 @@ Windows x64. No Python, no installer, no account, no network access needed.
 
 ## 1. Download
 
-Get `21-simulator-v2.1.1-windows-x64.zip` from the
+Get `21-simulator-v2.1.2-windows-x64.zip` from the
 [latest release](https://github.com/shanla-gh/21-simulator/releases/latest).
 
 Releases on this repository are the only official source. There is no other
@@ -18,13 +18,13 @@ The release page publishes a SHA-256 for the archive. Check it before running
 anything:
 
 ```powershell
-Get-FileHash .\21-simulator-v2.1.1-windows-x64.zip -Algorithm SHA256
+Get-FileHash .\21-simulator-v2.1.2-windows-x64.zip -Algorithm SHA256
 ```
 
-Compare the result with the value on the release page. For v2.1.1 it is:
+Compare the result with the value on the release page. For v2.1.2 it is:
 
 ```
-5fb89f2231e4f414e02c5a15db648b587097c4479843b9afb6f3d509ed52a9ad
+5f0472c66bb1e278145a4bc14f4c7e64bbfd28ad65dea1b97f0843967ea1c785
 ```
 
 If they differ, do not run it — delete it and download again.

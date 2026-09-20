@@ -8,6 +8,47 @@ down.
 
 ---
 
+## v2.1.2 — Six decks or eight, and it says which
+
+*A product release. **No mathematical result changed and no engine file
+changed**: eight decks already computed correctly. What this adds is the part a
+person touches.*
+
+### Added
+
+- **The two practical shoes are one press** — six decks and eight decks, beside
+  the deck field in the simulator, the table builder and Live Reconstruction.
+  Any count the rules allow can still be typed, so custom shoes are unchanged.
+- **The shoe states its own size**: *"Shoe — 8 decks, 416 cards"*, rather than
+  leaving you to divide a card total by 52.
+- **A chosen count that is not yet in play says so**: *"Playing 6 decks — start
+  the simulator to build 8"*.
+
+### Changed
+
+- The table builder's stale notice names the shoe: *"This answer is for a
+  6-deck shoe. The shoe is now set to 8 decks — press Calculate again."* A
+  six-deck expected value under an eight-deck setting is a wrong number, not
+  merely an old one.
+
+### Verified
+
+A fresh shoe holds 312 cards at six decks and 416 at eight, with every rank
+scaled. Composition, next-card probabilities, dealer distributions, action
+values, penetration and true-count normalisation all divide by the selected
+shoe. Both sizes are covered by the regression suite and both were checked
+against the independent exact-rational reference engine — 27 comparisons each,
+agreeing to within 4.4 × 10⁻¹⁶.
+
+### Not in this release
+
+Continuous shuffling machines, standard-shoe versus CSM selection, uncertain
+deck counts or burn cards, belief states over unobserved shoes, and automatic
+table recognition. This release makes finite-shoe analysis at six and eight
+decks correct and selectable; it does not model a real casino.
+
+---
+
 ## v2.1.1 — Readable, and where you left it
 
 *Product fixes. **No mathematical result changed**: every figure v2.1.0
