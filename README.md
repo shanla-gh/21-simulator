@@ -8,7 +8,7 @@ A probability and stochastic-decision research application built around Blackjac
 It reconstructs an observed table state and shows the mathematics that state implies —
 every distribution, every action value, and how each number was produced.
 
-![Release](https://img.shields.io/badge/release-v2.1.0-1f6f5c)
+![Release](https://img.shields.io/badge/release-v2.1.1-1f6f5c)
 ![Platform](https://img.shields.io/badge/platform-Windows%20x64-444444)
 ![Runs](https://img.shields.io/badge/runs-locally%2C%20no%20account-5b7f8a)
 ![Source](https://img.shields.io/badge/source-not%20publicly%20distributed-555555)
@@ -57,6 +57,39 @@ and nothing else.
 
 Plus the surfaces built on those: **Live Reconstruction**, the **Full
 Mathematical Trace**, the **Session Ledger**, and the **research views**.
+
+---
+
+## What it looks like
+
+Every image below is the published build, unretouched, analysing the state
+named in its caption.
+
+**Every legal action, compared.** Hard 16 vs 10 at six decks: expected value,
+what each action costs against the best one, win / push / loss, the decision
+margin, and whether the figures were enumerated or sampled.
+
+![Every legal action compared for hard 16 against a dealer 10, with expected values, outcome probabilities and the decision margin](assets/screenshots/action-comparison.png)
+
+**The derivation behind the recommendation.** What went in, the next-card
+distribution, the dealer's terminal distribution, each action derived term by
+term, where every number came from, what the calculation cost, and the
+self-checks it ran on its own output.
+
+![The full mathematical trace for the same state, from shoe composition through to self-checks](assets/screenshots/mathematical-trace.png)
+
+**Policies scored against the Oracle.** The research view reads what a research
+run actually wrote; a panel with no artifact behind it says so instead of
+showing a plausible default.
+
+![The research view, showing policy agreement, mean EV regret and regret by decision band](assets/screenshots/research-view.png)
+
+**Rebuilding a round card by card,** and the same analysis at phone width.
+
+<p align="center">
+  <img src="assets/screenshots/live-reconstruction.png" alt="Live Reconstruction, ready to rebuild a round one observation at a time" width="58%">
+  <img src="assets/screenshots/phone.png" alt="The action comparison on a narrow screen" width="30%">
+</p>
 
 ---
 
@@ -240,10 +273,10 @@ This layer is research. It is **not** "AI beats Blackjack".
 
 | | |
 | --- | --- |
-| Current release | **v2.1.0** |
+| Current release | **v2.1.1** |
 | Platform | Windows x64 |
-| Artifact | `21-simulator-v2.1.0-windows-x64.zip` (8.7 MB) |
-| SHA-256 | `1c1d7dcbf2ec063af6da4fd7f61dfecc680a0c897db623164982e8fe723e633b` |
+| Artifact | `21-simulator-v2.1.1-windows-x64.zip` (8.7 MB) |
+| SHA-256 | `5fb89f2231e4f414e02c5a15db648b587097c4479843b9afb6f3d509ed52a9ad` |
 | Requirements | none — no Python, no installer, no account |
 
 Extract the folder anywhere and run `21-simulator.exe`. It starts a local
@@ -276,10 +309,10 @@ research-contribution feature is off unless switched on deliberately.
 
 - **Independent certification.** Core values are compared against a separate
   exact-rational reference implementation sharing no code with the engine. In
-  the v2.1.0 run all 27 comparisons agreed to within **2.2 × 10⁻¹⁶**.
+  the v2.1.1 run all 27 comparisons agreed to within **2.2 × 10⁻¹⁶**.
 - **Validation suite.** Distribution closure, exact-vs-sampled cross-checks and
   published dealer tables: **15 of 15** checks passed.
-- **Regression suite.** Over 2,190 automated tests, including 149 browser tests
+- **Regression suite.** 2,207 automated tests, including 157 browser tests
   driving the real interface, plus a stress tier of long simulations.
 - **Packaged-artifact tests.** The downloadable build is started as a stranger
   would start it — copied elsewhere, path containing spaces, no development
@@ -291,7 +324,8 @@ research-contribution feature is off unless switched on deliberately.
 
 | Version | Focus |
 | --- | --- |
-| **v2.1.0** | Product hardening: interaction correctness, security, packaging, the Windows download |
+| **v2.1.1** | Readability and session fixes: controls stay readable under the pointer, a refresh keeps the hand |
+| v2.1.0 | Product hardening: interaction correctness, security, packaging, the Windows download |
 | v2.0.0 | Advanced mathematics, research views, ML evaluation, compute hardening |
 | v1.1.0 | Live Reconstruction and the table builder |
 | v1.0.0 | Exact finite-shoe engine, action comparison, mathematical trace |

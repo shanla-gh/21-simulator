@@ -8,6 +8,39 @@ down.
 
 ---
 
+## v2.1.1 — Readable, and where you left it
+
+*Product fixes. **No mathematical result changed**: every figure v2.1.0
+reported, v2.1.1 reports identically.*
+
+### Fixed
+
+- **A control no longer hides its own label under the pointer.** The view
+  tabs, the mode switch, the table-builder's workflow picker and an occupied
+  seat all lost their text the moment the mouse arrived — light lettering on a
+  pale hover wash, measured at 1.05 : 1 on the selected tab, which is not low
+  contrast but invisible. The control you were pointing at was the one you
+  could not read. Every control now states what hover means for it, and the
+  contrast of each one is measured by a test.
+- **A refresh no longer throws away the hand.** Pressing F5 in the middle of a
+  round used to start a new shoe. The application had the table all along; the
+  page had forgotten which table was its own. A tab now stays on its own table
+  across a reload, and falls back to a new one only when the application has
+  been restarted in the meantime.
+- **Two windows are two tables.** A second tab used to quietly take over the
+  first tab's session; the two now run independently.
+
+### Changed
+
+- The interface calls itself `21-simulator` — the same spelling as the
+  download, the executable and this page. v2.1.0 showed `21 Simulator` in the
+  page heading.
+
+*The published v2.1.0 archive and its checksum are unchanged and remain
+available on the [releases page](https://github.com/shanla-gh/21-simulator/releases).*
+
+---
+
 ## v2.1.0 — The download
 
 *Product hardening, packaging and the first public build. No validated

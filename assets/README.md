@@ -1,38 +1,48 @@
 # Assets
 
-Screenshots and short demo recordings for the 21-simulator product page.
+Screenshots for the 21-simulator product page.
 
-**No images have been added yet.** The main README deliberately does not embed
-any file from this folder until the file exists, so there are no broken image
-links. When an asset is added, embed it in the README's *Screenshots* section
-using the path listed below.
+Every image here was captured from the **published build** — the archive on the
+releases page, extracted and run — rather than from a development tree, so what
+the product page shows is what a download actually looks like. Recapture them
+whenever the interface changes in a way a reader would notice, and take the new
+images from the published build of that release.
 
-## Planned assets
+## What is here
 
-| File | Shows | Suggested capture |
+| File | Shows | State captured |
 | --- | --- | --- |
-| `assets/screenshots/action-comparison.png` | Every legal action with EV, win / push / loss and the decision margin | Analysis of a clear decision, e.g. hard 16 vs 10 at six decks |
-| `assets/screenshots/payoff-distribution.png` | The payoff distribution of each action | Upgraded mathematics opened on the same state |
-| `assets/screenshots/mathematical-trace.png` | The derivation behind a recommendation | "Show full mathematics" opened, first sections visible |
-| `assets/screenshots/live-reconstruction.png` | A round being rebuilt card by card | Mid-round, with the next requested card highlighted |
-| `assets/screenshots/same-count.png` | Same-count shoes with different best actions | The soft 18 vs 4 example |
-| `assets/screenshots/research-view.png` | Policies scored against the Oracle | Research view, benchmark table and regret by band |
-| `assets/screenshots/phone.png` | The interface on a narrow screen | Any analysis at phone width |
-| `assets/demo/live-reconstruction.gif` | Live Reconstruction in motion | 10–20 s, one short round |
+| `screenshots/action-comparison.png` | Every legal action with EV, cost against the best one, win / push / loss, and the decision margin | Hard 16 vs 10, six decks |
+| `screenshots/mathematical-trace.png` | The derivation behind the recommendation, from the shoe through to the self-checks | The same state, "Show full mathematics" opened |
+| `screenshots/research-view.png` | Policies scored against the Oracle: agreement, mean EV regret, regret by decision band | Research view, read from published artifacts |
+| `screenshots/live-reconstruction.png` | Rebuilding a round one observation at a time | Live Reconstruction, before the first card |
+| `screenshots/phone.png` | The action comparison on a narrow screen | Hard 16 vs 10 at 412 px wide |
+
+## Not captured yet
+
+| File | Would show |
+| --- | --- |
+| `screenshots/payoff-distribution.png` | The payoff distribution of each action, from the upgraded mathematics |
+| `screenshots/same-count.png` | Two shoes with the same count and different best actions — the soft 18 vs 4 example |
+| `demo/live-reconstruction.gif` | Live Reconstruction in motion, 10–20 s of one short round |
+
+The README embeds only files that exist, so there are no broken images.
 
 ## Guidelines
 
 - Capture the real application, not mock-ups. Do not retouch numbers.
-- Use a light, uncluttered browser window; crop to the application.
+- Capture from the published build of the release being documented.
+- Use a light, uncluttered window; crop to the application.
 - Show states with visible **exact** / **estimated** labels where relevant.
 - Avoid anything that suggests card prediction, betting advice or winnings.
 - Keep images reasonably small: PNG under ~500 KB, GIF under ~5 MB.
-- Use lowercase, hyphenated filenames as listed above.
+- Use lowercase, hyphenated filenames.
 
-## Embedding example
-
-Once `assets/screenshots/action-comparison.png` exists:
+## Embedding
 
 ```markdown
-![Action comparison](assets/screenshots/action-comparison.png)
+![Every legal action compared](assets/screenshots/action-comparison.png)
 ```
+
+Alt text describes the state and what the image shows, not the filename: the
+page is read by people who cannot see the picture too.
