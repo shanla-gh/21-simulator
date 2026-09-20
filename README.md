@@ -62,34 +62,40 @@ Mathematical Trace**, the **Session Ledger**, and the **research views**.
 
 ## What it looks like
 
-Every image below is the published build, unretouched, analysing the state
-named in its caption.
+Every image below is the published Windows build, unretouched, analysing the
+state described beside it.
 
-**Every legal action, compared.** Hard 16 vs 10 at six decks: expected value,
-what each action costs against the best one, win / push / loss, the decision
-margin, and whether the figures were enumerated or sampled.
+**Every legal action, compared.** A hard 16 against a dealer 10 on a six-deck
+shoe — but with another seat showing a pair of fives and an ace, a king and a
+seven already gone. On that shoe the best action is **STAND**, not the HIT a
+table of averages gives: the answer is computed from the cards that are
+actually left, and every figure here is labelled `exact`.
 
-![Every legal action compared for hard 16 against a dealer 10, with expected values, outcome probabilities and the decision margin](assets/screenshots/action-comparison.png)
+![The table builder's analysis of a hard 16 against a dealer 10 on a conditioned six-deck shoe: every legal action with its expected value, cost against the best action, win, push and lose probabilities, all marked exact, and a decision margin of +0.0022](assets/screenshots/action-comparison.png)
 
-**The derivation behind the recommendation.** What went in, the next-card
+**The derivation behind that recommendation.** What went in, the next-card
 distribution, the dealer's terminal distribution, each action derived term by
 term, where every number came from, what the calculation cost, and the
 self-checks it ran on its own output.
 
-![The full mathematical trace for the same state, from shoe composition through to self-checks](assets/screenshots/mathematical-trace.png)
+![The full mathematical trace for the same state: the inputs, the exact remaining composition, the next-card probabilities by rank, and the dealer's outcome distribution](assets/screenshots/mathematical-trace.png)
 
 **Policies scored against the Oracle.** The research view reads what a research
-run actually wrote; a panel with no artifact behind it says so instead of
+run actually wrote; a panel with no artifact behind it says so rather than
 showing a plausible default.
 
-![The research view, showing policy agreement, mean EV regret and regret by decision band](assets/screenshots/research-view.png)
+![The research view, showing agreement, mean EV regret, serious errors and convergence for ten policies, and mean regret broken down by how close the decision was](assets/screenshots/research-view.png)
 
-**Rebuilding a round card by card,** and the same analysis at phone width.
+**A round rebuilt card by card,** and the interface at phone width.
 
 <p align="center">
-  <img src="assets/screenshots/live-reconstruction.png" alt="Live Reconstruction, ready to rebuild a round one observation at a time" width="58%">
-  <img src="assets/screenshots/phone.png" alt="The action comparison on a narrow screen" width="30%">
+  <img src="assets/screenshots/live-reconstruction.png" alt="Live Reconstruction mid-round: a split has produced two hands, 8-3 and 8-A, against a dealer seven with the hole card unknown, with undo and redo available and the analysis marked estimated" width="58%">
+  <img src="assets/screenshots/phone.png" alt="The simulator on a narrow screen, showing the action buttons, the shoe panel with cards remaining and true count, and the action-values table" width="30%">
 </p>
+
+The left-hand picture is mid-split: the shoe, the probabilities and the action
+comparison follow the round as it is dealt, one observation at a time, and undo
+replays the state from what was recorded rather than patching it backwards.
 
 ---
 

@@ -12,11 +12,11 @@ images from the published build of that release.
 
 | File | Shows | State captured |
 | --- | --- | --- |
-| `screenshots/action-comparison.png` | Every legal action with EV, cost against the best one, win / push / loss, and the decision margin | Hard 16 vs 10, six decks |
+| `screenshots/action-comparison.png` | Every legal action with EV, cost against the best one, win / push / loss, and the decision margin | Hard 16 vs 10, six decks, conditioned on another seat's pair of fives and an A, K and 7 already seen — which makes STAND best |
 | `screenshots/mathematical-trace.png` | The derivation behind the recommendation, from the shoe through to the self-checks | The same state, "Show full mathematics" opened |
 | `screenshots/research-view.png` | Policies scored against the Oracle: agreement, mean EV regret, regret by decision band | Research view, read from published artifacts |
-| `screenshots/live-reconstruction.png` | Rebuilding a round one observation at a time | Live Reconstruction, before the first card |
-| `screenshots/phone.png` | The action comparison on a narrow screen | Hard 16 vs 10 at 412 px wide |
+| `screenshots/live-reconstruction.png` | Rebuilding a round one observation at a time | Live Reconstruction mid-round, after a split: hands 8-3 and 8-A against a dealer seven |
+| `screenshots/phone.png` | The interface on a narrow screen | The simulator in analysis mode at 390 px wide |
 
 ## Not captured yet
 
@@ -27,6 +27,14 @@ images from the published build of that release.
 | `demo/live-reconstruction.gif` | Live Reconstruction in motion, 10–20 s of one short round |
 
 The README embeds only files that exist, so there are no broken images.
+
+Regenerate them with the project's own capture script pointed at a running
+copy of the published build, so the pictures stay reproducible:
+
+```
+21-simulator.exe --serve --port 8123
+python scripts/screenshot.py --url http://127.0.0.1:8123 --output shots     --only builder --only trace --only live --only research --only phone
+```
 
 ## Guidelines
 
